@@ -62,35 +62,48 @@ const seedExperience = [
 ];
 
 export default async function Home() {
-    await dbConnect();
+    let projects = seedProjects;
+    let experiences = seedExperience;
 
-    // Check and Seed Projects
-    const projectCount = await Project.countDocuments();
-    if (projectCount === 0) {
-        await Project.insertMany(seedProjects);
-    }
-    const projects = await Project.find({}).lean();
-    const serializedProjects = projects.map(p => ({
-        ...p,
-        _id: p._id.toString(),
-        createdAt: p.createdAt?.toISOString(),
-        updatedAt: p.updatedAt?.toISOString()
-    }));
+    try {
+        await dbConnect();
 
-    // Check and Seed Experience
-    const expCount = await ExperienceModel.countDocuments();
-    if (expCount === 0) {
-        await ExperienceModel.insertMany(seedExperience);
+        // Fetch Projects
+        const dbProjects = await Project.find({}).lean();
+        if (dbProjects.length > 0) {
+            projects = dbProjects.map(p => ({
+                ...p,
+                title: p.title || "",
+                description: p.description || "",
+                tags: p.tags || [],
+                link: p.link || "#",
+                color: p.color || "from-gray-500 to-slate-500",
+                _id: p._id.toString(),
+                createdAt: p.createdAt?.toISOString(),
+                updatedAt: p.updatedAt?.toISOString()
+            }));
+        }
+
+        // Fetch Experience
+        const dbExperiences = await ExperienceModel.find({}).sort({ createdAt: -1 }).lean();
+        if (dbExperiences.length > 0) {
+            experiences = dbExperiences.map(e => ({
+                ...e,
+                company: e.company || "",
+                role: e.role || "",
+                period: e.period || "",
+                description: e.description || "",
+                tech: e.tech || [],
+                _id: e._id.toString(),
+                createdAt: e.createdAt?.toISOString(),
+                updatedAt: e.updatedAt?.toISOString()
+            }));
+        }
+
+    } catch (error) {
+        console.error("Database Connection Failed - Using Fallback Data:", error);
+        // We implicitly fall back to seedProjects/seedExperience initialized above
     }
-    // Fetch experiences sorted by creation (which matches seed order roughly since inserting many) 
-    // or by period string if we parsed it, but for now just insertion order/default.
-    const experiences = await ExperienceModel.find({}).sort({ createdAt: -1 }).lean();
-    const serializedExperiences = experiences.map(e => ({
-        ...e,
-        _id: e._id.toString(),
-        createdAt: e.createdAt?.toISOString(),
-        updatedAt: e.updatedAt?.toISOString()
-    }));
 
     return (
         <main className="min-h-screen bg-background relative selection:bg-blue-500/30 selection:text-blue-600">
@@ -98,8 +111,8 @@ export default async function Home() {
             <Hero />
             <About />
             <Skills />
-            <Projects projects={serializedProjects} />
-            <Experience experiences={serializedExperiences} />
+            <Projects projects={projects} />
+            <Experience experiences={experiences} />
             <Education />
             <Contact />
             <Footer />
