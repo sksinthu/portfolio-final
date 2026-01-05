@@ -72,7 +72,7 @@ export function Contact() {
                             <div>
                                 <p className="text-sm text-muted-foreground font-medium">LinkedIn</p>
                                 <a href="https://linkedin.com/in/kirusnavelusinthujan" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold hover:text-purple-600 transition-colors">
-                                    linkedin.com/in/kirusnavelusinthujan
+                                    linkedin.com
                                 </a>
                             </div>
                         </div>
