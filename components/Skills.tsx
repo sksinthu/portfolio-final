@@ -143,7 +143,7 @@ function SkillCard({ title, icon: Icon, color, skills, delay }: { title: string,
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay }}
-            className={`p-8 rounded-3xl border backdrop-blur-sm bg-card/30 hover:bg-card/50 transition-colors ${colorClasses[color]} border-opacity-50`}
+            className={`p-6 sm:p-8 rounded-3xl border backdrop-blur-sm bg-card/30 hover:bg-card/50 transition-colors ${colorClasses[color]} border-opacity-50`}
         >
             <div className="flex items-center gap-4 mb-8">
                 <div className={`p-3 rounded-2xl ${colorClasses[color]} bg-opacity-20`}>

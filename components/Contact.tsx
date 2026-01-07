@@ -96,7 +96,7 @@ export function Contact() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="bg-card p-8 rounded-2xl border border-border shadow-sm"
+                        className="bg-card p-6 sm:p-8 rounded-2xl border border-border shadow-sm"
                     >
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>

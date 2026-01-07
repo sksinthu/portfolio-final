@@ -29,7 +29,7 @@ export function Experience({ experiences = [] }: { experiences?: Experience[] })
                     <div className="w-20 h-1 bg-purple-600 mx-auto rounded-full mb-8"></div>
                 </motion.div>
 
-                <div className="space-y-12 relative border-l-2 border-border ml-3 md:ml-6 pl-8 md:pl-12">
+                <div className="space-y-12 relative border-l-2 border-border ml-3 md:ml-6 pl-6 md:pl-12">
                     {experiences.map((exp, index) => (
                         <motion.div
                             key={index}
@@ -40,7 +40,7 @@ export function Experience({ experiences = [] }: { experiences?: Experience[] })
                             className="relative"
                         >
                             {/* Timeline Dot */}
-                            <div className="absolute -left-[41px] md:-left-[59px] top-0 bg-background border-4 border-primary w-6 h-6 rounded-full"></div>
+                            <div className="absolute -left-[37px] md:-left-[59px] top-0 bg-background border-4 border-primary w-6 h-6 rounded-full"></div>
 
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                                 <h3 className="text-xl font-bold text-foreground flex items-center gap-2">

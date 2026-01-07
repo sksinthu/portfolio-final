@@ -32,7 +32,7 @@ export function Hero() {
                             Available for Freelance & Opportunities
                         </div>
 
-                        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
+                        <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
                             Hi, I'm <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x">
                                 Sinthujan
@@ -81,7 +81,7 @@ export function Hero() {
                         transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
                         className="relative flex justify-center items-center"
                     >
-                        <div className="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px]">
+                        <div className="relative w-64 h-64 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px]">
                             {/* Glowing Blobs behind image */}
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-purple-500/20 rounded-full blur-2xl animate-pulse delay-700"></div>
